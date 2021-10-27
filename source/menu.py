@@ -28,6 +28,3 @@ class App:
         pass
     def restart_game(self):
         pass
-
-if __name__ == "__main__":
-    app = App()
