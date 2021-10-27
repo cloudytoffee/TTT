@@ -1,2 +1,4 @@
 /.vscode
 /requirements.txt
+/__pycache__
+/include/__pycache__
