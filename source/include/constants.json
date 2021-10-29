@@ -1,9 +1,13 @@
 {
+    "Button":{
+        "width":900,
+        "height":100
+    },
     "Menu":{
         "size":500
     },
     "Game":{
-        "size": 700,
+        "size": 900,
         "moves":{
             "corners":[7,9,1,3],
             "center":5,

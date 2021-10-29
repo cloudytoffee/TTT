@@ -1,7 +1,8 @@
 # pylint: disable=C,unspecified-encoding
 
 import sys
-import menu
+from include import menu , board
 
 if __name__ == "__main__":
-    app = menu.App()
+    game = board.Board()
+    game.run()
