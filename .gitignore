@@ -2,3 +2,8 @@
 /requirements.txt
 /__pycache__
 /include/__pycache__
+source/include/ads.py
+source/include/__pycache__/const.cpython-39.pyc
+source/include/__pycache__/menu.cpython-39.pyc
+source/include/__pycache__/board.cpython-39.pyc
+.gitignore
