@@ -1,6 +1,7 @@
 import random 
 import pygame
 import pygame_menu as pm
+import time
 from include import const,functions
 
 
@@ -137,12 +138,12 @@ class Board:
         elif self.row == 2 and self.col == 2:
             self.pos = 8
         if self.current_letter:
-            if self.board[self.pos] == None:
+            if self.board[self.pos] == " ":
                 self.drawLetter(self.row, self.col,self.current_letter,False,None)
                 self.board[self.pos] = True
                 self.current_letter = not self.current_letter
         else:
-            if self.board[self.pos] == None:
+            if self.board[self.pos] == " ":
                 self.drawLetter(self.row, self.col,self.current_letter,False,None)
                 self.board[self.pos] = False
                 self.current_letter = not self.current_letter
@@ -195,16 +196,24 @@ class Board:
 
     def checkWin (self, board):
         win_player = functions.isWinner(board,self.letter)
+        if functions.boardFull(board):
+            print('draw')
+            self.again.add.label("GAME OVER\n TIE",align=pm.locals.ALIGN_CENTER, font_size=60)
+            self.again.add.button("Quit",pm.events.EXIT)
+            time.sleep(1)
+            self.again.mainloop(self.surface,self.main_background,fps_limit=60)
         if win_player:
             print('player wins')
             self.again.add.label("GAME OVER\n PLAYER WINS",align=pm.locals.ALIGN_CENTER, font_size=60)
             self.again.add.button("Quit",pm.events.EXIT)
+            time.sleep(1)
             self.again.mainloop(self.surface,self.main_background,fps_limit=60)
         win_comp = functions.isWinner(board,(not self.letter))
         if win_comp:
             print('comp wins')
             self.again.add.label("GAME OVER\n COMPUTER WINS",align=pm.locals.ALIGN_CENTER, font_size=60)
             self.again.add.button("Quit",pm.events.EXIT)
+            time.sleep(1)
             self.again.mainloop(self.surface,self.main_background,fps_limit=60)
         else:
             return
@@ -257,7 +266,7 @@ class Board:
                     self.menu_object.update(events)
                 move = functions.getCompMove(self.board,(not self.letter),self.player_first,self.turn_number,self.difficulty)
                 print(move)
-                # self.checkClick(True,move)
-                # self.drawLetter(None,None,self.letter,True,move)
+                self.checkClick(True,move)
+                self.drawLetter(None,None,self.letter,True,move)
                 self.checkWin(self.board)
                 self.player_first = not self.player_first

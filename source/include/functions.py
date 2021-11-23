@@ -12,6 +12,7 @@ def getBoardCopy(board):
 
     for i in board:
         dupeBoard.append(i)
+    return dupeBoard
 
 def isWinner(bo,le) -> bool:
     return ((bo[6] == le and bo[7] == le and bo[8] == le) or # across the top
@@ -69,7 +70,7 @@ def getImpossibleMove(board, comp_letter, player_first, turn):
         if isMoveAvailable(board, 4):
             return 4
 
-    if turnNumber == 2 and player_first == True:
+    if turn == 2 and player_first == True:
         move = getRandom(board, [1, 3, 5, 7])
         if move != None:
             return move
@@ -93,10 +94,10 @@ def getBeginnerMove(board, computerletter):
         return move
 
 def getEasyMove(board, computerletter):
-    if computerletter == 'X':
-        playersLetter = 'O'
+    if computerletter:
+        playersLetter = False
     else:
-        playersLetter = 'X'
+        playersLetter = True
 
     for i in range(1, 10):
         copy = getBoardCopy(board)
