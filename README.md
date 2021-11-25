@@ -12,4 +12,4 @@ in your terminal,
 or
 `pip3 install python-menu`
 if you are on linux   
-by Ahil (preffered name Bea/Tris)
+by cloudytoffee
